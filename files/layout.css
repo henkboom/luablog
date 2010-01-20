@@ -1,0 +1,44 @@
+*
+{
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body
+{
+  background-color: #fff;
+  color: #111;
+  font-size: 10pt;
+}
+
+a
+{
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  color: #111;
+}
+
+p
+{
+  margin-top: 12px;
+}
+
+p:first-child
+{
+    margin-top: 0;
+}
+
+.content
+{
+  margin: 12px auto;
+  width: 476px; /* 450 + 12 + 12 + 2 */
+}
+
+.post, #header, #footer
+{
+  background-color: #eee;
+  border: 1px solid #ddd;
+  margin: 12px 0;
+  padding: 12px;
+}

@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteRule ^$ index.lua
+
+RewriteRule ^atom$ index.lua?atom=1
+
+RewriteCond %{DOCUMENT_ROOT}/files/$1.md -f
+RewriteRule ^(.*)$ index.lua?post=$1
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^index.lua$
+RewriteCond $1 !^files/
+RewriteRule ^(.*)$ files/$1
+</IfModule>
+
+Options +ExecCGI
+AddHandler cgi-script lua
