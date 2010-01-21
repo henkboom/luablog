@@ -26,7 +26,7 @@ local html_footer = [[
 local function show_html_post(p)
   print(html_header)
   print '<div id="header">'
-  print(post.get_special('header').get_content())
+  print(post.get_special('header'))
   print '</div>'
 
   print('<div class="post" id="' .. p.get_id() .. '">')
@@ -35,7 +35,7 @@ local function show_html_post(p)
   print '</div>\n'
 
   print '<div id="footer">'
-  print(post.get_special('footer').get_content())
+  print(post.get_special('footer'))
   print '</div>'
   print(html_footer)
 end
@@ -43,7 +43,7 @@ end
 local function show_html_index(posts)
   print(html_header)
   print '<div id="header">'
-  print(post.get_special('header').get_content())
+  print(post.get_special('header'))
   print '</div>'
 
   for _, p in ipairs(posts) do
@@ -54,7 +54,7 @@ local function show_html_index(posts)
   end
 
   print '<div id="footer">'
-  print(post.get_special('footer').get_content())
+  print(post.get_special('footer'))
   print '</div>'
   print(html_footer)
 end
