@@ -1,8 +1,6 @@
 require "markdown"
 local post = require 'post'
-
-local blog_url = 'http://localhost/sketch/index.lua'
-local atom_url = 'http://localhost/sketch/index.lua?atom=1'
+local conf = require 'conf'
 
 ---- HTML ---------------------------------------------------------------------
 
@@ -12,10 +10,10 @@ Content-type: text/html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html><head>
-<title>sketch.henk.ca</title>
+<title>]] .. conf.blog_title .. [[</title>
 <link rel="stylesheet" type="text/css" href="layout.css"/>
 <link rel="alternate" type="application/atom+xml"
-      href="]] .. atom_url .. [["/>
+      href="]] .. conf.atom_url .. [["/>
 </head><body><div class="content">
 ]]
 
@@ -67,8 +65,8 @@ local function show_atom(posts)
   print '<?xml version="1.0" encoding="utf-8"?>'
   print '<feed xmlns="http://www.w3.org/2005/Atom">'
   print '<title>sketch.henk.ca</title>'
-  print('<link href="' .. atom_url .. '" rel="self"/>')
-  print('<link href="' .. blog_url .. '"/>')
+  print('<link href="' .. conf.atom_url .. '" rel="self"/>')
+  print('<link href="' .. conf.blog_url .. '"/>')
   print('<updated>' .. os.date("!%Y-%m-%dT%H:%M:%SZ") .. '</updated>')
   print '<author><name>Henk</name></author>'
   print('<id>' .. atom_url .. '</id>\n')
