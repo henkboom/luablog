@@ -10,7 +10,7 @@ Content-type: text/html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html><head>
-<title>]] .. conf.blog_title .. [[</title>
+<title>]] .. conf.title .. [[</title>
 <link rel="stylesheet" type="text/css" href="layout.css"/>
 <link rel="alternate" type="application/atom+xml"
       href="]] .. conf.atom_url .. [["/>
@@ -59,17 +59,25 @@ end
 
 ---- ATOM ---------------------------------------------------------------------
 
-local function show_atom(posts)
-  print 'Content-type: application/atom+xml\n'
+local atom_header = [[
+Content-type: application/atom+xml
 
-  print '<?xml version="1.0" encoding="utf-8"?>'
-  print '<feed xmlns="http://www.w3.org/2005/Atom">'
-  print '<title>sketch.henk.ca</title>'
-  print('<link href="' .. conf.atom_url .. '" rel="self"/>')
-  print('<link href="' .. conf.blog_url .. '"/>')
-  print('<updated>' .. os.date("!%Y-%m-%dT%H:%M:%SZ") .. '</updated>')
-  print '<author><name>Henk</name></author>'
-  print('<id>' .. atom_url .. '</id>\n')
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>]] .. conf.title .. [[</title>
+<link href="]] .. conf.atom_url .. [[" rel="self"/>
+<link href="]] .. conf.base_url .. [["/>
+<updated>]] .. os.date("!%Y-%m-%dT%H:%M:%SZ") .. [[</updated>
+<author><name>]] .. conf.author .. [[</name></author>
+<id>]] .. conf.atom_url .. [[</id>
+]]
+
+local atom_footer = [[
+</feed>
+]]
+
+local function show_atom(posts)
+  print(atom_header)
 
   for _, p in ipairs(posts) do
     print '<entry>'
@@ -83,7 +91,7 @@ local function show_atom(posts)
     print '</entry>\n'
   end
 
-  print '</feed>'
+  print(atom_footer)
 end
 
 return {
