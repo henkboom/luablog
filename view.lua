@@ -83,7 +83,7 @@ local function show_atom(posts)
     print '<entry>'
     print('<title>' .. p.get_title() .. '</title>')
     print('<link rel="alternate" href="' .. p.get_url() .. '" />')
-    print('<id>tag:henk.ca,2009:' .. p.get_id() .. '</id>')
+    print('<id>' .. conf.atom_id_base .. p.get_id() .. '</id>')
     print('<updated>' .. p.get_date() .. 'T00:00:00Z' .. '</updated>')
     print '<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">'
     print(p.get_content())
