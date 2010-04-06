@@ -5,7 +5,7 @@ RewriteRule ^$ index.lua
 
 RewriteRule ^atom$ index.lua?atom=1
 
-RewriteCond %{DOCUMENT_ROOT}/files/$1.md -f
+RewriteCond files/$1.md -F
 RewriteRule ^(.*)$ index.lua?post=$1
 
 #RewriteCond %{REQUEST_FILENAME} !-f
