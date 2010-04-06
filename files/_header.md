@@ -1,3 +1,3 @@
-[LuaBlog](/)
-============
-[page](/page)
+[LuaBlog](/luablog/)
+====================
+[page](/luablog/page)

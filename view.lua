@@ -21,28 +21,34 @@ local html_footer = [[
 </div></body></html>
 ]]
 
-local function show_html_post(p)
+local function show_html_header()
   print(html_header)
   print '<div id="header">'
   print(post.get_special('header'))
   print '</div>'
 
-  print('<div class="post" id="' .. p.get_id() .. '">')
-  print('<h2><a href="' .. p.get_url() .. '">' .. p.get_title() .. '</a></h2>')
-  print(p.get_content())
-  print '</div>\n'
+end
 
+local function show_html_footer()
   print '<div id="footer">'
   print(post.get_special('footer'))
   print '</div>'
   print(html_footer)
 end
 
+local function show_html_post(p)
+  show_html_header()
+
+  print('<div class="post" id="' .. p.get_id() .. '">')
+  print('<h2><a href="' .. p.get_url() .. '">' .. p.get_title() .. '</a></h2>')
+  print(p.get_content())
+  print '</div>\n'
+
+  show_html_footer()
+end
+
 local function show_html_index(posts)
-  print(html_header)
-  print '<div id="header">'
-  print(post.get_special('header'))
-  print '</div>'
+  show_html_header()
 
   for _, p in ipairs(posts) do
     print('<div class="post" id="' .. p.get_id() .. '">')
@@ -51,10 +57,20 @@ local function show_html_index(posts)
     print '</div>\n'
   end
 
-  print '<div id="footer">'
-  print(post.get_special('footer'))
-  print '</div>'
-  print(html_footer)
+  show_html_footer()
+end
+
+---- 404 ----------------------------------------------------------------------
+
+local function show_404()
+  print('Status: 404 Not Found')
+  show_html_header()
+
+  print '<div class="post" id="error">'
+  print '<h2>404 Not Found</h2>'
+  print '</div>\n'
+
+  show_html_footer()
 end
 
 ---- ATOM ---------------------------------------------------------------------
@@ -97,5 +113,6 @@ end
 return {
   show_html_post=show_html_post,
   show_html_index=show_html_index,
+  show_404=show_404,
   show_atom=show_atom
 }

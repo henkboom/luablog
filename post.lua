@@ -1,9 +1,14 @@
 require 'lfs'
+local conf = require 'conf'
 
 local file_dir = 'files/'
 
-local function read_post(filename)
-  local file = assert(io.open(file_dir .. filename))
+local function id_to_filename(id)
+  return file_dir .. id .. '.md'
+end
+
+local function read_post(id)
+  local file = assert(io.open(id_to_filename(id)))
   local data = file:read('*a')
   file:close()
 
@@ -37,7 +42,7 @@ end
 local function make_post(id)
   local post = {}
 
-  local metadata, content = read_post(id .. '.md')
+  local metadata, content = read_post(id)
 
   function post.get_title()
     return metadata.title
@@ -48,7 +53,7 @@ local function make_post(id)
   end
 
   function post.get_url()
-    return '/' .. id
+    return conf.base_url .. id
   end
 
   function post.get_content()
@@ -93,7 +98,12 @@ local function get_special(name)
 end
 
 local function get_by_id(id)
-  return make_post(id)
+  local f = io.open(id_to_filename(id))
+  if f then
+    f:close()
+    return make_post(id)
+  end
+  return false
 end
 
 return { get_posts=get_posts, get_special=get_special, get_by_id=get_by_id }
