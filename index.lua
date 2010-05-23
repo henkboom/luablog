@@ -1,18 +1,20 @@
 #!/usr/bin/env lua
 
-local view = require 'view'
+local plugin = require 'plugin'
 local post = require 'post'
 
+plugin.init()
+
 if os.getenv('QUERY_STRING') == 'atom=1' then
-  view.show_atom(post.get_posts())
+  plugin.page_callback('atom', post.get_posts())
 elseif os.getenv('QUERY_STRING'):match('^post=(.+)$') then
   local id = os.getenv('QUERY_STRING'):match('^post=(.+)$')
   local post = post.get_by_id(id)
   if post then
-    view.show_html_post(post)
+    plugin.page_callback('post', post)
   else
-    view.show_404()
+    plugin.page_callback('404')
   end
 else
-  view.show_html_index(post.get_posts())
+  plugin.page_callback('index')
 end

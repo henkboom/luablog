@@ -1,4 +1,5 @@
 require 'lfs'
+require 'markdown'
 local conf = require 'conf'
 
 local file_dir = 'files/'
