@@ -1,4 +1,5 @@
 local conf = require 'conf'
+local plugin = require 'plugin'
 local post = require 'post'
 
 local atom_header = [[
@@ -18,7 +19,7 @@ local atom_footer = [[
 </feed>
 ]]
 
-register_page('atom', function ()
+plugin.register_page('atom', function ()
   local posts = post.get_posts()
 
   print(atom_header)
@@ -38,7 +39,7 @@ register_page('atom', function ()
   print(atom_footer)
 end)
 
-register_element('head', function ()
+plugin.register_element('head', function ()
   print '<link rel="alternate" type="application/atom+xml"'
   print('      href="' .. conf.atom_url .. '"/>')
 end)

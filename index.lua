@@ -3,7 +3,7 @@
 local plugin = require 'plugin'
 local post = require 'post'
 
-plugin.init()
+plugin.load_all()
 
 if os.getenv('QUERY_STRING') == 'atom=1' then
   plugin.page_callback('atom', post.get_posts())

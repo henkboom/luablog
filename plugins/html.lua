@@ -29,7 +29,7 @@ local function show_html_footer()
   print(html_footer)
 end
 
-register_page('post', function (post)
+plugin.register_page('post', function (post)
   show_html_header()
 
   print('<div class="post" id="' .. post.get_id() .. '">')
@@ -41,7 +41,7 @@ register_page('post', function (post)
   show_html_footer()
 end)
 
-register_page('index', function ()
+plugin.register_page('index', function ()
   local posts = post.get_posts()
 
   show_html_header()
@@ -56,7 +56,7 @@ register_page('index', function ()
   show_html_footer()
 end)
 
-register_page('404', function ()
+plugin.register_page('404', function ()
   print('Status: 404 Not Found')
   show_html_header()
 
