@@ -32,7 +32,7 @@ local function read_post(id)
   end)
   if not success then 
     metadata = {
-      title = 'Error Loading "' .. filename .. '"',
+      title = 'Error Loading "' .. id .. '"',
       date = '2000-01-01T00:00:00Z'
     }
     content = err and '    ' .. err or ''
