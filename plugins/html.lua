@@ -46,11 +46,26 @@ plugin.register_page('index', function ()
 
   show_html_header()
 
-  for _, p in ipairs(posts) do
+  local last_post = math.min(#posts, conf.html_post_count)
+
+  for i = 1, last_post do
+    local p = posts[i]
+
     print('<div class="post" id="' .. p.get_id() .. '">')
     print('<h2><a href="' .. p.get_url() .. '">' .. p.get_title() .. '</a></h2>')
     print(p.get_content())
     print '</div>\n'
+  end
+
+  if last_post ~= #posts then
+    print('<ul class="archive">')
+    for i = last_post + 1, #posts do
+      local p = posts[i]
+      print('<li id="' .. p.get_id() .. '">')
+      print('<a href="' .. p.get_url() .. '">' .. p.get_title() .. '</a>')
+      print('</li>')
+    end
+    print('</ul>')
   end
 
   show_html_footer()

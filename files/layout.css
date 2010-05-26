@@ -35,10 +35,20 @@ p:first-child
   width: 476px; /* 450 + 12 + 12 + 2 */
 }
 
-.post, #header, #footer
+.post, .archive, #header, #footer
 {
   background-color: #eee;
   border: 1px solid #ddd;
   margin: 12px 0;
   padding: 12px;
+}
+
+.archive
+{
+  list-style-type: none;
+}
+
+.archive li
+{
+
 }
