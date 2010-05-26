@@ -2,13 +2,14 @@
 
 local plugin = require 'plugin'
 local post = require 'post'
+local request = require 'request'
 
 plugin.load_all()
 
-if os.getenv('QUERY_STRING') == 'atom=1' then
+if request.get['atom'] then
   plugin.page_callback('atom', post.get_posts())
-elseif os.getenv('QUERY_STRING'):match('^post=(.+)$') then
-  local id = os.getenv('QUERY_STRING'):match('^post=(.+)$')
+elseif request.get['post'] then
+  local id = request.get['post'] 
   local post = post.get_by_id(id)
   if post then
     plugin.page_callback('post', post)
