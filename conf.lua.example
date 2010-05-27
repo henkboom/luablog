@@ -1,17 +1,19 @@
 return {
   title = 'luablog',
   author = 'jon doe',
-
-  plugins = {'html', 'atom'}
-
   base_url = 'http://localhost/',
+
+  plugins = {'html', 'atom'},
+
+  -- html plugin
+  html_post_count = 5,
 
   -- atom plugin
   atom_url = 'http://localhost/atom',
-  atom_id_base = 'tag:localhost,2010:'
+  atom_id_base = 'tag:localhost,2010:',
 
   -- openid plugin
   --openid_server = "http://www.myopenid.com/server",
-  --openid_delegate = "http://john.myopenid.com",
-  --openid_xrds = "http://john.myopenid.com/xrds?username=john.myopenid.com"
+  --openid_delegate = "http://jon.myopenid.com",
+  --openid_xrds = "http://jon.myopenid.com/xrds?username=jon.myopenid.com",
 }
