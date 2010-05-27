@@ -36,6 +36,7 @@ plugin.register_page('post', function (post)
   print('<h2><a href="' .. post.get_url() .. '">' .. post.get_title()
         .. '</a></h2>')
   print(post.get_content())
+  plugin.element_callback('post_end')
   print '</div>\n'
 
   show_html_footer()

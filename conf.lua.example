@@ -16,4 +16,8 @@ return {
   --openid_server = "http://www.myopenid.com/server",
   --openid_delegate = "http://jon.myopenid.com",
   --openid_xrds = "http://jon.myopenid.com/xrds?username=jon.myopenid.com",
+
+  -- disqus plugin
+  --disqus_developer = false,
+  --disqus_community_name = 'luablog',
 }
