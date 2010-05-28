@@ -20,4 +20,7 @@ return {
   -- disqus plugin
   --disqus_developer = false,
   --disqus_community_name = 'luablog',
+
+  -- google analytics plugin
+  --google_analytics_account_id = 'UA-1234567',
 }

@@ -1,0 +1,22 @@
+local conf = require 'conf'
+local plugin = require 'plugin'
+
+local code = [[
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ?
+    "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost +
+    "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  try {
+    var pageTracker = _gat._getTracker("]] .. conf.google_analytics_account_id
+    .. [[");
+    pageTracker._trackPageview();
+  } catch(err) {}
+</script>
+]]
+
+plugin.register_element('html_body_end', function ()
+  print(code)
+end)

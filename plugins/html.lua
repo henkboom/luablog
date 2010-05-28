@@ -2,10 +2,6 @@ local conf = require 'conf'
 local plugin = require 'plugin'
 local post = require 'post'
 
-local html_footer = [[
-</div></body></html>
-]]
-
 local function show_html_header()
   print 'Content-type: text/html'
   print ''
@@ -14,7 +10,7 @@ local function show_html_header()
   print '<html><head>'
   print('<title>' .. conf.title .. '</title>')
   print '<link rel="stylesheet" type="text/css" href="layout.css"/>'
-  plugin.element_callback('head')
+  plugin.element_callback('html_head')
   print '</head><body><div class="content">'
 
   print '<div id="header">'
@@ -26,7 +22,9 @@ local function show_html_footer()
   print '<div id="footer">'
   print(post.get_special('footer'))
   print '</div>'
-  print(html_footer)
+  print '</div>'
+  plugin.element_callback('html_body_end')
+  print '</body></html>'
 end
 
 plugin.register_page('post', function (post)

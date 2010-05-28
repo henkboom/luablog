@@ -39,7 +39,7 @@ plugin.register_page('atom', function ()
   print(atom_footer)
 end)
 
-plugin.register_element('head', function ()
+plugin.register_element('html_head', function ()
   print '<link rel="alternate" type="application/atom+xml"'
   print('      href="' .. conf.atom_url .. '"/>')
 end)
