@@ -1,7 +1,11 @@
 local conf = require 'conf'
 local plugin = require 'plugin'
 
-plugin.register_element('post_end', function ()
+plugin.register_element('post_end', function (post)
+  if post.get_meta('no_comments') then
+    return
+  end
+
   if conf.disqus_developer then
     print '<script type="text/javascript">var disqus_developer = 1;</script>'
   end

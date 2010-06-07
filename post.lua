@@ -8,6 +8,10 @@ local function id_to_filename(id)
   return file_dir .. id .. '.md'
 end
 
+local function filename_to_id(filename)
+  return filename:match('^([^_].*)%.md$')
+end
+
 local function read_post(id)
   local file = assert(io.open(id_to_filename(id)))
   local data = file:read('*a')
@@ -62,8 +66,11 @@ local function make_post(id)
   end
 
   function post.get_date()
-    assert(metadata.date)
     return metadata.date
+  end
+
+  function post.get_meta(key)
+    return metadata[key]
   end
 
   return post
@@ -73,9 +80,12 @@ local function get_posts()
   local posts = {}
 
   for f in lfs.dir(file_dir) do
-    local id = f:match('^(%d*)%.md$')
+    local id = filename_to_id(f)
     if id then
-      table.insert(posts, make_post(id))
+      local post = make_post(id)
+      if not post.get_meta('skip_index') then
+        table.insert(posts, make_post(id))
+      end
     end
   end
 
