@@ -11,20 +11,22 @@ plugin.register_element('post_end', function (post)
   end
 
   print([[
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      (function() {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src =
-          'http://]] .. conf.disqus_community_name .. [[.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] ||
-         document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-    </script>
-    <noscript>
-      Please enable JavaScript to view comments.
-    </noscript>
+    <div id="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = 'http://]] .. conf.disqus_community_name ..
+            [[.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] ||
+           document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>
+        Please enable JavaScript to view comments.
+      </noscript>
+    </div>
   ]])
 end)

@@ -21,6 +21,9 @@ return {
   --disqus_developer = false,
   --disqus_community_name = 'luablog',
 
+  -- intensedebate plugin
+  --intensedebate_acct = '01234567890abcdf0123456789abcdf0',
+
   -- google analytics plugin
   --google_analytics_account_id = 'UA-1234567',
 }
