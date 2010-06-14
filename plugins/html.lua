@@ -3,7 +3,7 @@ local plugin = require 'plugin'
 local post = require 'post'
 
 local function show_html_header()
-  print 'Content-type: text/html'
+  print 'Content-type: text/html; charset=UTF-8'
   print ''
   print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"'
   print '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
