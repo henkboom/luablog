@@ -33,6 +33,7 @@ plugin.register_page('post', function (post)
   print('<div class="post" id="' .. post.get_id() .. '">')
   print('<h2><a href="' .. post.get_url() .. '">' .. post.get_title()
         .. '</a></h2>')
+  print('<div class="date">' .. post.get_date():sub(1, 10) .. '</div>')
   print(post.get_content())
   plugin.element_callback('post_end', post)
   print '</div>\n'
@@ -52,6 +53,7 @@ plugin.register_page('index', function ()
 
     print('<div class="post" id="' .. p.get_id() .. '">')
     print('<h2><a href="' .. p.get_url() .. '">' .. p.get_title() .. '</a></h2>')
+    print('<div class="date">' .. p.get_date():sub(1, 10) .. '</div>')
     print(p.get_content())
     print '</div>\n'
   end
