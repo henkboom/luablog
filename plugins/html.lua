@@ -33,7 +33,9 @@ plugin.register_page('post', function (post)
   print('<div class="post" id="' .. post.get_id() .. '">')
   print('<h2><a href="' .. post.get_url() .. '">' .. post.get_title()
         .. '</a></h2>')
-  print('<div class="date">' .. post.get_date():sub(1, 10) .. '</div>')
+  if not post.get_meta('skip_index') then
+    print('<div class="date">' .. post.get_date():sub(1, 10) .. '</div>')
+  end
   print(post.get_content())
   plugin.element_callback('post_end', post)
   print '</div>\n'
