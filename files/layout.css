@@ -52,3 +52,19 @@ p:first-child
 {
 
 }
+
+#gallery
+{
+    line-height: 0%;
+}
+
+#gallery a
+{
+    display: inline-block;
+}
+
+#gallery img
+{
+    width: 100px;
+    height: 100px;
+}
