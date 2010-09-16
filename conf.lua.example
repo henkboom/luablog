@@ -2,6 +2,7 @@ return {
   title = 'luablog',
   author = 'jon doe',
   base_url = 'http://localhost/',
+  default_page = 'index',
 
   plugins = {'html', 'atom'},
 

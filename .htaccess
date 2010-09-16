@@ -3,7 +3,7 @@ RewriteEngine On
 
 RewriteRule ^$ index.lua
 
-RewriteRule ^atom$ index.lua?atom=1
+RewriteRule ^atom$ index.lua?page=atom
 
 RewriteCond files/$1.md -F
 RewriteRule ^(.*)$ index.lua?post=$1
