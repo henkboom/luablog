@@ -84,3 +84,8 @@ plugin.register_page('404', function ()
 
   show_html_footer()
 end)
+
+return {
+  show_html_header = show_html_header,
+  show_html_footer = show_html_footer
+}
